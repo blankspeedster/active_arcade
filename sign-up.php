@@ -72,7 +72,7 @@
                       <select class="form-control" id="formControlSelectRole" name="role" required>
                           <option value="" disabled selected>Select</option>
                           <option value="2">User</option>
-                          <option value="3">Clinic</option>
+                          <!-- <option value="3">Doctor</option> -->
                       </select>
                     </div>
                     <div class="input-group input-group-static mb-3">
