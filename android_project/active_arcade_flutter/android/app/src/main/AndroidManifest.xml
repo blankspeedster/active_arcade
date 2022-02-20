@@ -2,7 +2,7 @@
     package="com.example.active_arcade_flutter">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="active_arcade_flutter"
+        android:label="Active Arcade"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config">
