@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
           body: SafeArea(
             child: WebView(
-              initialUrl: "http://pawsbook.acms.org.ph",
+              initialUrl: "http://Active Arcade.acms.org.ph",
               javascriptMode: JavascriptMode.unrestricted,
             ),
           )

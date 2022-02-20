@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pawsbook_flutter">
+    package="com.example.Active Arcade_flutter">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="pawsbook_flutter"
+        android:label="Active Arcade_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config">

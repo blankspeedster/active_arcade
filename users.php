@@ -57,10 +57,10 @@ if (isset($_GET['edit_user'])) {
                       <div class="input-group input-group-static mb-4">
                         <label for="formControlSelectRole" class="ms-0">Signing up for: </label>
                         <select class="form-control" id="formControlSelectRole" name="role" value="<?php if(!$isAdding){echo  $user['role_id'];} ?>" required>
-                          <option value="" disabled selected>Select</option>
+                          <option value="" disabled selected>Signing Up For </option>
                           <option value="1">Admin</option>
                           <option value="2">User</option>
-                          <option value="3">Clinic Owner</option>
+                          <option value="3">Doctor</option>
                         </select>
                       </div>
                     </div>
@@ -140,7 +140,7 @@ if (isset($_GET['edit_user'])) {
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><i class="fas fa-user"></i> Fullname</th>
                     <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"><i class="fas fa-hashtag"></i> ID Number</th> -->
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"><i class="fas fa-phone"></i> Phone Number</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><i class="fas fa-scroll"></i> Role</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="display: none;"><i class="fas fa-scroll"></i> Role</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><i class="fas fa-check"></i> Validation Status</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><i class="fas fa-ellipsis-v"></i> Actions</th>
                   </tr>
@@ -165,7 +165,7 @@ if (isset($_GET['edit_user'])) {
                       <td>
                         <p class="text-xs text-secondary mb-0"><?php echo $user['phone_number']; ?></p>
                       </td>
-                      <td class="align-middle text-center text-sm">
+                      <td class="align-middle text-center text-sm" style="display: none;">
                         <?php if ($user['role'] == 1) { ?>
                           <span class="badge badge-sm bg-gradient-success">Admin</span>
                         <?php } else if ($user['role'] == 2) { ?>

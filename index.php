@@ -4,11 +4,10 @@ include("head.php");
 $_SESSION['sidebar'] = "newsfeed";
 ?>
 <title>
-  PawsBook - Dashboard
+  Active Arcade - Dashboard
 </title>
 
 <body class="g-sidenav-show  bg-gray-200">
-
   <?php include("aside.php"); ?>
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -33,7 +32,7 @@ $_SESSION['sidebar'] = "newsfeed";
       <div class="container-fluid py-4">
         <div class="row mb-4">
 
-          <div class="col-lg-9 col-md-8 mb-md-0 mb-4">
+          <div class="col-lg-9 col-md-8 mb-md-0 mb-4" style="display: none;">
             <div class="card">
               <div class="card-header pb-0 bg-gradient-success">
                 <div class="row">
@@ -42,7 +41,7 @@ $_SESSION['sidebar'] = "newsfeed";
                   </div>
                 </div>
               </div>
-              <div class="card-body px-0 pb-2">
+              <div class="card-body px-0 pb-2" style="display: none;">
                 <form @submit.prevent="postCaption">
                   <!-- <div class="card p-2 m-2"> -->
                   <div class="card-body px-0 pb-2 m-2">
@@ -81,10 +80,13 @@ $_SESSION['sidebar'] = "newsfeed";
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-3">
+          <?php $role = $_SESSION['role']; ?>
+          <div class="col-lg-12 col-md-12" style="<?php if ($role != 1) {
+                                                    echo "display: none";
+                                                  } ?>">
             <div class="card h-100">
               <div class="card-header pb-0">
-                <h6>Find Friends</h6>
+                <h6>Users</h6>
               </div>
               <div class="card-body p-3">
                 <div class="timeline-one-side">
@@ -105,53 +107,115 @@ $_SESSION['sidebar'] = "newsfeed";
                       </span>
                       <div class="timeline-content">
                         <h6 class="text-dark font-weight-bold mb-0"><a :href="'profile.php?user='+s.id" target="_blank">{{s.firstname}} {{s.lastname}}</a></h6>
-                        <a href="#" class="text-secondary font-weight-bold text-xs mt-1 mb-0" @click="sendRequest(s.id)">+ Send Link Request</a>
+                        <!-- <a href="#" class="text-secondary font-weight-bold text-xs mt-1 mb-0" @click="sendRequest(s.id)">+ Send Link Request</a> -->
                       </div>
                     </div>
                   </span>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="card-header pb-0">
-                <h6>Link Requests</h6>
-              </div>
-              <div class="card-body p-3">
-                <div class="timeline-one-side">
-                  <span v-if="!linkRequests.length">
-                    <div class="timeline-block mb-3">
-                      <span class="timeline-step">
-                        <i class="fas fa-flag text-success"></i>
-                      </span>
-                      <div class="timeline-content">
-                        <span class="text-dark text-sm mb-0">No pending request.</span>
-                      </div>
-                    </div>
-                  </span>
-                  <span v-else v-for="l in linkRequests">
-                    <div class="timeline-block mb-3">
-                      <span class="timeline-step">
-                        <i class="fa fa-user text-success text-gradient"></i>
-                      </span>
-                      <div class="timeline-content">
-                        <h6 class="text-dark font-weight-bold mb-0"><a :href="'profile.php?user='+l.id" target="_blank">{{l.firstname}} {{l.lastname}}</a></h6>
-                        <a type="button" class="text-secondary font-weight-bold text-xs mt-1 m-1" data-toggle="modal" data-target="#confirm-modal" @click="setRequestId(l.id)">
-                          <i class="fas fa-check text-success"></i> Accept
-                          </button>
-                          <a type="button" class="text-secondary font-weight-bold text-xs mt-1 m-1" data-toggle="modal" data-target="#reject-modal" @click="setRequestId(l.id)">
-                            <i class="fas fa-times text-danger"></i> Reject
-                            </button>
-                      </div>
-                    </div>
-                  </span>
+          <?php if ($role == 2 || $role == 3) { ?>
 
+
+            <div style="margin-bottom: 2%;" class="col-lg-12 col-md-12" v-if="!confirmBluetooth">
+              <div class="card h-100">
+                <div class="card-header pb-0">
+                  <h6>Attention</h6>
+                </div>
+                <div class="card-body p-3">
+                  <span>Please make sure that bluetooth watch is connected to your smartphone or your laptop. Click confirm after successfully connecting the watch.</span>
+                  <button style="float: right;" class="btn btn-success text-white" @click="confirmBluetoothConnection">Confirm Connection.</button>
                 </div>
               </div>
             </div>
 
-          </div>
+            <div style="margin-bottom: 2%;" class="col-lg-12 col-md-12" v-if="!doneLoading && confirmBluetooth">
+              <div class="card h-100">
+                <div class="card-header pb-0">
+                  Please Wait
+                </div>
+                <div class="card-body p-3">
+                  <div style="text-align: center;">
+                      <div class="lds-ripple"><div></div><div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" v-if="doneLoading">
+              <div class="col-xl-12">
+                <div class="row">
+                  <div class="col-md-12 col-lg-3 m-4">
+                    <div class="card">
+                      <div class="card-header mx-3 p-3 text-center">
+                        <div class="icon icon-shape icon-lg bg-gradient-danger shadow text-center border-radius-lg">
+                          <i class="material-icons opacity-10">favorite</i>
+                        </div>
+                      </div>
+                      <div class="card-body pt-0 p-3 text-center">
+                        <h6 class="text-center mb-0">Heart Rate</h6>
+                        <hr class="horizontal dark my-3">
+                        <h5 class="mb-0">{{heartRate}}</h5>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-lg-3 m-4">
+                    <div class="card">
+                      <div class="card-header mx-3 p-3 text-center">
+                        <div class="icon icon-shape icon-lg bg-gradient-info shadow text-center border-radius-lg">
+                          <i class="material-icons opacity-10">hot_tub</i>
+                        </div>
+                      </div>
+                      <div class="card-body pt-0 p-3 text-center">
+                        <h6 class="text-center mb-0">Temperature</h6>
+                        <hr class="horizontal dark my-3">
+                        <h5 class="mb-0">{{temperature}}</h5>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-lg-3 m-4">
+                    <div class="card">
+                      <div class="card-header mx-3 p-3 text-center">
+                        <div class="icon icon-shape icon-lg bg-gradient-success shadow text-center border-radius-lg">
+                          <i class="material-icons opacity-10">bubble_chart</i>
+                        </div>
+                      </div>
+                      <div class="card-body pt-0 p-3 text-center">
+                        <h6 class="text-center mb-0">Oxygen Saturation</h6>
+                        <hr class="horizontal dark my-3">
+                        <h5 class="mb-0">{{oxygen}}</h5>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-top: 2%; display: none;" class="col-lg-12 col-md-12">
+              <div class="card h-100">
+                <div class="card-header pb-0">
+                  <h6>Vital Statistics</h6>
+                </div>
+                <div class="card-body p-3">
+                  <div class="col-lg-6">
+                    <i class="fa fa-heart" style="font-size:48px;color:red"></i>
+                    Heart Rate:
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+
         </div>
 
-        <?php include("footer.php"); ?>
+      </div>
+      </div>
+
+      <?php include("footer.php"); ?>
       </div>
 
       <!-- Start Modal -->
@@ -221,6 +285,25 @@ $_SESSION['sidebar'] = "newsfeed";
 
         //Posts
         userPosts: [],
+
+        //Loop Control
+        confirmBluetooth: false,
+        doneLoading: false,
+
+        //Heart Rate
+        minBpm: 60,
+        maxBpm: 100,
+        heartRate: 0,
+
+        //Temperature
+        minTemperature: 36.1,
+        maxTemperature: 37.2,
+        temperature: 0,
+
+        //Oxygen Saturation
+        minOxygen: 95,
+        maxOxygen: 100,
+        oxygen: 0,
 
         //Friends
         friendSuggestions: [],
@@ -420,6 +503,55 @@ $_SESSION['sidebar'] = "newsfeed";
             this.snackBarMessage = "There is an error getting the information. Please try again.";
           });
       },
+
+
+      //Get Vital Statistics
+      getVitalStats() {
+        this.heartRate = Math.floor(Math.random() * (this.maxBpm - this.minBpm + 1)) + this.minBpm;
+
+
+        //Normalize Heart rate randomly
+        if (Math.random() <= 0.5) {
+          this.minBpm = this.heartRate + 0.5;
+          this.maxBpm = this.heartRate + 0.5;
+        } else {
+          this.minBpm = this.heartRate - 0.5;
+          this.maxBpm = this.heartRate - 0.5;
+        }
+
+        this.temperature = Math.random() * (this.maxTemperature - this.minTemperature + 1) + this.minTemperature;
+
+        //Normalize Heart Tempereture randomly
+        // if(Math.random() <= 0.5){
+        //   this.minTemperature = this.temperature - 0.1;
+        //   this.maxTemperature = this.temperature + 0.1;
+        // }
+        // else{
+        //   this.minTemperature = this.temperature + 0.1;
+        //   this.maxTemperature = this.temperature - 0.1;
+        // }
+
+        this.temperature = this.temperature.toFixed(1);
+
+        this.oxygen = Math.floor(Math.random() * (this.maxOxygen - this.minOxygen + 1)) + this.minOxygen;
+
+        this.intervalFunction();
+      },
+
+      //Interval Here
+      intervalFunction() {
+        // this.getVitalStats();
+        setTimeout(this.getVitalStats, 10000);
+      },
+
+      //UI mostly
+      confirmBluetoothConnection(){
+          this.confirmBluetooth = true;
+          setTimeout(this.doneLoadingFunction, 5000);
+      },
+      doneLoadingFunction(){
+          this.doneLoading = true;
+      }
     },
 
     async mounted() {
@@ -427,8 +559,42 @@ $_SESSION['sidebar'] = "newsfeed";
       await this.getFriends();
       await this.getLinkRequest();
       await this.getCaption();
+      this.getVitalStats();
     }
   });
 </script>
-
+<style>
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid black;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 100px;
+    left: 100px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}  
+</style>
 </html>

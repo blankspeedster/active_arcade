@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    PawsBook
+    Active Arcade
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -90,7 +90,7 @@
             <div class="col-12 col-md-6 my-auto">
               <div class="copyright text-center text-sm text-white text-lg-start">
                 © <?php echo date("Y"); ?>,
-                PawsBook
+                Active Arcade
               </div>
             </div>
 <!--            <div class="col-12 col-md-6">-->

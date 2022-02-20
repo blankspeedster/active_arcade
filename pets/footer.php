@@ -4,7 +4,7 @@
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div class="copyright text-center text-sm text-muted text-lg-start">
                     © <?php echo date("Y"); ?>
-                    PawsBook
+                    Active Arcade
                 </div>
             </div>
             <div class="col-lg-6">

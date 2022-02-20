@@ -4,7 +4,7 @@ include("head.php");
 $_SESSION['sidebar'] = "remedy";
 ?>
 <title>
-  PawsBook - Pets Remedy
+  Active Arcade - Pets Remedy
 </title>
 
 <body class="g-sidenav-show  bg-gray-200">

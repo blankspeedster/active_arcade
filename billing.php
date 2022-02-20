@@ -1,9 +1,10 @@
 <?php
+    require_once("process_billing.php");
     include("head.php");
     $_SESSION['sidebar'] = "billing";
 ?>
 <title>
-    PawsBook - Billing
+    Active Arcade - Billing
 </title>
 
 <body class="g-sidenav-show  bg-gray-200">

@@ -6,7 +6,7 @@ $current_user = $_SESSION['user_id'];
 
 ?>
 <title>
-    PawsBook - Track Pet
+    Active Arcade - Track Pet
 </title>
 
 <body class="g-sidenav-show  bg-gray-200">
