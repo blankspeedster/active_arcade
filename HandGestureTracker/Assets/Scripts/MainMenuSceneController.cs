@@ -20,4 +20,10 @@ public class MainMenuSceneController : MonoBehaviour
     {
         
     }
+
+    // go to Wrist Scene
+    public void goToWrist()
+    {
+        SceneManager.LoadScene("Wrist");
+    }
 }
