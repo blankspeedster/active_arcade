@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class WristScript : MonoBehaviour
 {
 
-    public TMP_Text userName, timer;
+    public TMP_Text userName, timer, scoreText;
     public float timeRemaining = 10;
     public GameObject timeUpPanel;
 
@@ -17,6 +17,7 @@ public class WristScript : MonoBehaviour
         timeUpPanel.SetActive(false);
         string username = PlayerPrefs.GetString("username");
         userName.text = username;
+        PlayerPrefs.SetInt("wristScore", 0);
     }
 
     // Update is called once per frame
@@ -33,6 +34,10 @@ public class WristScript : MonoBehaviour
             timer.text = "Time: 0";
             timeUpPanel.SetActive(true);
         }
+
+        int score = PlayerPrefs.GetInt("wristScore");
+        string _score = "Score: "+ score.ToString();
+        scoreText.text = _score;
     }
 
     //Go to Main Menu
