@@ -32,4 +32,11 @@ public class MainMenuSceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Elbow");
     }
+    
+    // go to Elbow
+    public void gotoShoulder()
+    {
+        SceneManager.LoadScene("Shoulder");
+    }
+
 }
