@@ -42,12 +42,12 @@
      <Compile Include="Assets/Scripts/Elbow/ElbowScript.cs" />
      <Compile Include="Assets/Scripts/LineCode.cs" />
      <Compile Include="Assets/Scripts/WristScript.cs" />
+     <Compile Include="Assets/Scripts/Wrist/ColissionWristA.cs" />
      <Compile Include="Assets/Scripts/Elbow/CollissionCube.cs" />
      <Compile Include="Assets/Scripts/WelcomeScreen.cs" />
      <Compile Include="Assets/Scripts/Wrist/ColissionWrist.cs" />
      <Compile Include="Assets/Scripts/MainMenuSceneController.cs" />
      <Compile Include="Assets/Scripts/CollisionDetection.cs" />
-     <Compile Include="Assets/Scripts/Wrist/ColissionWristA.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
