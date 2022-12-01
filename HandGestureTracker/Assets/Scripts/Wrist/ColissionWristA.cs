@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColissionWristA : MonoBehaviour
 {   
-    public GameObject checker, checker2;
+    public GameObject checker, checker2, checker3;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +36,15 @@ public class ColissionWristA : MonoBehaviour
             checker2.SetActive(false);
             Invoke("ShowChecker2", 2.0f);            
         }
+
+        if(collision.collider.name == "colliderChecker3")
+        {
+            int score = PlayerPrefs.GetInt("wristScore");
+            score = score + 1;
+            PlayerPrefs.SetInt("wristScore", score);
+            checker3.SetActive(false);
+            Invoke("ShowChecker3", 2.0f);            
+        }
     }
 
     void ShowChecker()
@@ -47,4 +56,10 @@ public class ColissionWristA : MonoBehaviour
     {
         checker2.SetActive(true);
     }
+
+    void ShowChecker3()
+    {
+        checker3.SetActive(true);
+    }
+
 }

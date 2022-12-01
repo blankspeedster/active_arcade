@@ -6,8 +6,8 @@
     }
 
     $host = 'localhost';
-    $username = 'root';
-    $password = '';
+    $username = 'activate_arcade_database';
+    $password = 'activate_arcade_database';
     $database = 'activate_arcade_database';
 
     $mysqli = new mysqli($host,$username,$password,$database) or die(mysqli_error($mysqli));
