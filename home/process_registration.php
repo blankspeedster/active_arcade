@@ -17,7 +17,7 @@
             $_SESSION['email'] = $newCheckUser["email"];
             $_SESSION['firstname'] = $newCheckUser["firstname"];
             $_SESSION['lastname'] = $newCheckUser["lastname"];
-            $_SESSION['date_of_birth'] = $newCheckUser["role"];
+            $_SESSION['role'] = $newCheckUser["role"];
 
             header("location: index.php");
         }
