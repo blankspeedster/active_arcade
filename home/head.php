@@ -1,3 +1,9 @@
+<?php
+    require("dbh.php");
+    if(!isset($_SESSION['email'])){
+        header('location: login.php');
+    }
+?>
 <head>
 
     <meta charset="utf-8">

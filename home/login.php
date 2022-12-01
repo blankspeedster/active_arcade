@@ -1,6 +1,18 @@
+<?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+    
+    if(isset($_SESSION['email'])){
+        header('location: index.php');
+    }
+
+$email = "";
+if(isset($_GET['email'])){$email = $_GET['email'];}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <style>
         .bg-gradient-primary {
@@ -30,6 +42,22 @@
 <body class="bg-gradient-primary">
 
     <div class="container">
+        <!-- Alert Here -->
+        <?php
+        if(isset($_SESSION['loginError'])){
+            ?>
+            <br>
+            <div class="alert alert-warning alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <?php
+                echo $_SESSION['loginError'];
+                unset($_SESSION['loginError']);
+                ?>
+            </div>
+            <?php
+        }
+        ?>
+        <!-- End Alert Here -->
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -48,10 +76,10 @@
                                     </div>
                                     <form class="user" method="post" action="process_registration.php">
                                         <div class="form-group">
-                                            <input type="email" class="form-control " id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control " id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"  value="<?php echo $email; ?>">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
