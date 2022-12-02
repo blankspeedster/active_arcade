@@ -32,9 +32,8 @@
         $fname = ucfirst($_POST['fname']);
         $lname = ucfirst($_POST['lname']);
         $email = strtolower($_POST['email']);
-        $phone_number = strtolower($_POST['phone_number']);
 
-        $mysqli->query("UPDATE users SET firstname = '$fname', lastname = '$lname', email = '$email', phone_number = '$phone_number' WHERE id = '$user_id' ") or die ($mysqli->error);
+        $mysqli->query("UPDATE user SET firstname = '$fname', lastname = '$lname', email = '$email' WHERE id = '$user_id' ") or die ($mysqli->error);
         $_SESSION['message'] = "Record has been updated!";
         $_SESSION['msg_type'] = "info";
         header("location: users.php");
@@ -61,12 +60,19 @@
         header("location: users.php");
     }
 
+    $firstname = "";
+    $lastname = "";
+    $email = "";
 
     //Edit User
     if(isset($_GET['edit'])){
         $user_id = $_GET['edit'];
-        $users = $mysqli->query("SELECT * FROM users u JOIN role r ON r.id = u.role WHERE u.id='$user_id'") or die ($mysqli->error);
+        $users = $mysqli->query("SELECT * FROM user WHERE id='$user_id'") or die ($mysqli->error);
         $edit_user = $users->fetch_array();
-
+        $firstname = $edit_user["firstname"];
+        $lastname = $edit_user["lastname"];
+        $email = $edit_user["email"];
     }
+
+
 ?>

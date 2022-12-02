@@ -1,3 +1,6 @@
+<?php
+$role = $_SESSION['role'] 
+?>
 <style>
     .bg-gradient-primary {
         background-color: #1B5B3A !important;
@@ -31,7 +34,7 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Users -->
-    <li class="nav-item">
+    <li class="nav-item" style="display: <?php if($role == "patient"){echo 'none';} ?>;">
         <a class="nav-link" href="users.php">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span></a>
