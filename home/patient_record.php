@@ -328,12 +328,13 @@ if (isset($_GET['user'])) {
             <!-- Page level plugins -->
             <script src="vendor/chart.js/Chart.min.js"></script>
             <?php
-                $getHeartRateDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ");
-                $getHeartRate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ");
-                $getBloodPressureDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ");
-                $getBloodPressure =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ");
-                $getRespirationDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ");
-                $getRespiration =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ");
+                $limit_ = 30;
+                $getHeartRateDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
+                $getHeartRate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
+                $getBloodPressureDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
+                $getBloodPressure =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
+                $getRespirationDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
+                $getRespiration =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
             ?>
             <script>
                 // Set new default font family and font color to mimic Bootstrap's default styling
@@ -375,13 +376,13 @@ if (isset($_GET['user'])) {
                             label: "Heart Rate",
                             lineTension: 0.3,
                             backgroundColor: "rgba(78, 115, 223, 0.05)",
-                            borderColor: "rgba(78, 115, 223, 1)",
+                            borderColor: "#D50000",
                             pointRadius: 3,
-                            pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                            pointBorderColor: "rgba(78, 115, 223, 1)",
+                            pointBackgroundColor: "#D50000",
+                            pointBorderColor: "#D50000",
                             pointHoverRadius: 3,
                             pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                            pointHoverBorderColor: "#D50000",
                             pointHitRadius: 10,
                             pointBorderWidth: 2,
                             data: [<?php while($heartRate = mysqli_fetch_array($getHeartRate)){echo $heartRate['heart_rate']; ?>, <?php } ?>],
@@ -420,8 +421,8 @@ if (isset($_GET['user'])) {
                                     }
                                 },
                                 gridLines: {
-                                    color: "rgb(234, 236, 244)",
-                                    zeroLineColor: "rgb(234, 236, 244)",
+                                    color: "#D50000",
+                                    zeroLineColor: "#D50000",
                                     drawBorder: false,
                                     borderDash: [2],
                                     zeroLineBorderDash: [2]
@@ -433,11 +434,11 @@ if (isset($_GET['user'])) {
                         },
                         tooltips: {
                             backgroundColor: "rgb(255,255,255)",
-                            bodyFontColor: "#858796",
+                            bodyFontColor: "#D50000",
                             titleMarginBottom: 10,
-                            titleFontColor: '#6e707e',
+                            titleFontColor: '#D50000',
                             titleFontSize: 14,
-                            borderColor: '#dddfeb',
+                            borderColor: '#D50000',
                             borderWidth: 1,
                             xPadding: 15,
                             yPadding: 15,
@@ -465,13 +466,13 @@ if (isset($_GET['user'])) {
                             label: "Heart Rate",
                             lineTension: 0.3,
                             backgroundColor: "rgba(78, 115, 223, 0.05)",
-                            borderColor: "rgba(78, 115, 223, 1)",
+                            borderColor: "#00695C",
                             pointRadius: 3,
-                            pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                            pointBorderColor: "rgba(78, 115, 223, 1)",
+                            pointBackgroundColor: "#00695C",
+                            pointBorderColor: "#00695C",
                             pointHoverRadius: 3,
-                            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                            pointHoverBackgroundColor: "#00695C",
+                            pointHoverBorderColor: "#00695C",
                             pointHitRadius: 10,
                             pointBorderWidth: 2,
                             data: [<?php while($heartRate = mysqli_fetch_array($getBloodPressure)){echo $heartRate['blood_pressure']; ?>, <?php } ?>],
@@ -510,8 +511,8 @@ if (isset($_GET['user'])) {
                                     }
                                 },
                                 gridLines: {
-                                    color: "rgb(234, 236, 244)",
-                                    zeroLineColor: "rgb(234, 236, 244)",
+                                    color: "#00695C",
+                                    zeroLineColor: "#00695C",
                                     drawBorder: false,
                                     borderDash: [2],
                                     zeroLineBorderDash: [2]
@@ -523,11 +524,11 @@ if (isset($_GET['user'])) {
                         },
                         tooltips: {
                             backgroundColor: "rgb(255,255,255)",
-                            bodyFontColor: "#858796",
+                            bodyFontColor: "#00695C",
                             titleMarginBottom: 10,
-                            titleFontColor: '#6e707e',
+                            titleFontColor: '#00695C',
                             titleFontSize: 14,
-                            borderColor: '#dddfeb',
+                            borderColor: '#00695C',
                             borderWidth: 1,
                             xPadding: 15,
                             yPadding: 15,
