@@ -104,6 +104,38 @@ $session_user_id = $_SESSION['user_id'];
                                         </div>
                                     </div>
 
+                                    <!-- Phone Number -->
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                    Phone Number
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <input type="number" class="form-control" name="phone" value="<?php echo $phone; ?>" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Gender -->
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                    Gender
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <select name="gender" class="form-control" required>
+                                                        <option value="" disabled selected>Gender:</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- Role -->
                                     <div class="col-xl-4 col-md-6 mb-4">
                                         <div class="row no-gutters align-items-center">
@@ -114,7 +146,7 @@ $session_user_id = $_SESSION['user_id'];
                                                 <?php if ($_SESSION["role"] == "admin") { ?>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                         <?php if (isset($_GET['edit'])) { ?>
-                                                            <input type="text" class="form-control" id="password" name="role" value="" readonly>
+                                                            <input type="text" class="form-control" id="password" name="role" value="<?php echo $role; ?>" readonly>
                                                         <?php } else { ?>
                                                             <select name="role" class="form-control" required>
                                                                 <option value="" disabled selected>Role:</option>
@@ -198,29 +230,39 @@ $session_user_id = $_SESSION['user_id'];
                                             <th>Name</th>
                                             <th>Email Address</th>
                                             <th>Role</th>
+                                            <th>Phone Number</th>
+                                            <th>Gender</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php while($user = mysqli_fetch_array($users)){ ?>
-                                        <tr>
-                                            <td><?php echo $user['firstname']. ' '.$user['lastname']; ?></td>
-                                            <td><?php echo $user['email']; ?></td>
-                                            <td><?php echo ucfirst($user['role']); ?></td>
-                                            <td>
-                                                <a href="users.php?edit=<?php echo $user['id']; ?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
-                                                <!-- Start Drop down Delete here -->
-                                                <button class="btn btn-danger btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="<?php if ($session_user_id == $user['id']) { echo 'display: none;'; } ?>">
-                                                    <i class="far fa-trash-alt"></i> Delete
-                                                </button>
-                                                <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton btn-sm">
-                                                    You sure you want to delete? You cannot undo the changes<br />
-                                                    <a href="#" class='btn btn-success btn-sm'><i class="far fa-window-close"></i> Cancel</a>
-                                                    <a href="process_users.php?delete=<?php echo $user['id'] ?>" class='btn btn-danger btn-sm'><i class="far fa-trash-alt"></i> Confirm Delete</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php }  ?>
+                                        <?php while ($user = mysqli_fetch_array($users)) { ?>
+                                            <tr>
+                                                <td>
+                                                    <a href="patient_record.php?user=<?php echo $user['id']; ?>">
+                                                        <?php echo $user['firstname'] . ' ' . $user['lastname']; ?>
+                                                    </a>
+                                                </td>
+                                                <td><?php echo $user['email']; ?></td>
+                                                <td><?php echo ucfirst($user['role']); ?></td>
+                                                <td><?php echo ucfirst($user['phone_number']); ?></td>
+                                                <td><?php echo ucfirst($user['gender']); ?></td>
+                                                <td>
+                                                    <a href="users.php?edit=<?php echo $user['id']; ?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
+                                                    <!-- Start Drop down Delete here -->
+                                                    <button class="btn btn-danger btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="<?php if ($session_user_id == $user['id']) {
+                                                                                                                                                                                                                                            echo 'display: none;';
+                                                                                                                                                                                                                                        } ?>">
+                                                        <i class="far fa-trash-alt"></i> Delete
+                                                    </button>
+                                                    <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton btn-sm">
+                                                        You sure you want to delete? You cannot undo the changes<br />
+                                                        <a href="#" class='btn btn-success btn-sm'><i class="far fa-window-close"></i> Cancel</a>
+                                                        <a href="process_users.php?delete=<?php echo $user['id'] ?>" class='btn btn-danger btn-sm'><i class="far fa-trash-alt"></i> Confirm Delete</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php }  ?>
                                     </tbody>
                                 </table>
                             </div>

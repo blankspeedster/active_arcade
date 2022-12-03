@@ -2,30 +2,17 @@
     include("dbh.php");
 
     if(isset($_POST['save'])){
-        $role = $_POST['role'];
-        $fname = ucfirst($_POST['fname']);
-        $lname = ucfirst($_POST['lname']);
-        $email = strtolower($_POST['email']);
-        $password = $_POST['password'];
-        $phone_number = $_POST['phone'];
-        $gender = $_POST['gender'];
+        $patient_id = $_POST['patient_id'];
+        $therapist = $_POST['therapist'];
+        $diagnosis = $_POST['diagnosis'];
+        $treatment = $_POST['treatment'];
 
-        // $password = password_hash($password, PASSWORD_DEFAULT);
+        $mysqli->query(" INSERT INTO patient_record (patient_id, therapist_id, diagnosis, treatment_recomendation) VALUES('$patient_id','$therapist','$diagnosis','$treatment') ") or die ($mysqli->error);
 
-        $checkUser = $mysqli->query("SELECT * FROM user WHERE email='$email' ");
-        if(mysqli_num_rows($checkUser)>0){
-            $_SESSION['msg_type'] = "danger";
-            $_SESSION['message'] = "Email already taken. Please try another.";
-            header("location: users.php?fname=".$fname."&lname=".$lname."&email=".$email."&phone_number=".$phone_number);
-        }
-        else{
-            $mysqli->query(" INSERT INTO user ( firstname, lastname, email, password, role) VALUES('$fname','$lname','$email','$password', '$role') ") or die ($mysqli->error);
-
-            $_SESSION['message'] = "User has been created!";
-            $_SESSION['msg_type'] = "success";
-
-            header("location: users.php");
-        }
+        $_SESSION['message'] = "Record has been saved!";
+        $_SESSION['msg_type'] = "success";
+        $getURI = $_SESSION['getURI'];
+        header("location: ".$getURI);
     }
 
     if(isset($_POST['update'])){
@@ -34,10 +21,8 @@
         $fname = ucfirst($_POST['fname']);
         $lname = ucfirst($_POST['lname']);
         $email = strtolower($_POST['email']);
-        $gender =   strtolower($_POST['gender']);
-        $phone_number =   strtolower($_POST['phone']);
 
-        $mysqli->query("UPDATE user SET firstname = '$fname', lastname = '$lname', email = '$email', gender = '$gender', phone_number = '$phone_number' WHERE id = '$user_id' ") or die ($mysqli->error);
+        $mysqli->query("UPDATE user SET firstname = '$fname', lastname = '$lname', email = '$email' WHERE id = '$user_id' ") or die ($mysqli->error);
         $_SESSION['message'] = "Record has been updated!";
         $_SESSION['msg_type'] = "info";
         header("location: users.php");
@@ -67,7 +52,6 @@
     $firstname = "";
     $lastname = "";
     $email = "";
-    $phone = "";
 
     //Edit User
     if(isset($_GET['edit'])){
@@ -77,8 +61,6 @@
         $firstname = $edit_user["firstname"];
         $lastname = $edit_user["lastname"];
         $email = $edit_user["email"];
-        $role = $edit_user["role"];
-        $phone = $edit_user["phone_number"];
     }
 
 
