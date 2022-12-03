@@ -329,12 +329,12 @@ if (isset($_GET['user'])) {
             <script src="vendor/chart.js/Chart.min.js"></script>
             <?php
                 $limit_ = 30;
-                $getHeartRateDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
-                $getHeartRate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
-                $getBloodPressureDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
-                $getBloodPressure =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
-                $getRespirationDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
-                $getRespiration =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY date_time ASC LIMIT $limit_ ");
+                $getHeartRateDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
+                $getHeartRate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
+                $getBloodPressureDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
+                $getBloodPressure =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
+                $getRespirationDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
+                $getRespiration =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
             ?>
             <script>
                 // Set new default font family and font color to mimic Bootstrap's default styling
