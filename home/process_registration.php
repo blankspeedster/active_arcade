@@ -33,14 +33,14 @@
 
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $checkUser = $mysqli->query("SELECT * FROM users WHERE email='$email' ");
+        $checkUser = $mysqli->query("SELECT * FROM user WHERE email='$email' ");
         if(mysqli_num_rows($checkUser)>0){
 
             $_SESSION['registerError'] = "Email already taken. Please try another.";
             header("location: register.php?fname=".$fname."&lname=".$lname."&email=".$email);
         }
         else{
-            $mysqli->query(" INSERT INTO users (firstname, lastname, email, password, role, phone_number) VALUES('$fname','$lname','$email','$password', '$role','$phone_number') ") or die ($mysqli->error());
+            $mysqli->query(" INSERT INTO user (firstname, lastname, email, password, role) VALUES('$fname','$lname','$email','$password', '$role') ") or die ($mysqli->error);
 
             $_SESSION['loginError'] = "User Account Creation Successful!";
             header("location: login.php");

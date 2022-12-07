@@ -3,7 +3,7 @@ $lname = "";
 $fname = "";
 $email = "";
 
-if($_GET["fname"])
+if(isset($_GET["fname"]))
 {
     $lname = "";
     $fname = "";
