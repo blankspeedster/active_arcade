@@ -328,7 +328,7 @@ if (isset($_GET['user'])) {
             <!-- Page level plugins -->
             <script src="vendor/chart.js/Chart.min.js"></script>
             <?php
-                $limit_ = 30;
+                $limit_ = 10;
                 $getHeartRateDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
                 $getHeartRate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
                 $getBloodPressureDate =  mysqli_query($mysqli, "SELECT * FROM vitals WHERE patient_id = '$user_id' ORDER BY id DESC LIMIT $limit_ ");
