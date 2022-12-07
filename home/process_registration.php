@@ -31,8 +31,6 @@
         $email = strtolower($_POST['email']);
         $password = $_POST['password'];
 
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
         $checkUser = $mysqli->query("SELECT * FROM user WHERE email='$email' ");
         if(mysqli_num_rows($checkUser)>0){
 
