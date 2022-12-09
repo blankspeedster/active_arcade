@@ -11,7 +11,7 @@ public class ElbowScript : MonoBehaviour
     private float timeRemaining;
     public GameObject timeUpPanel;
 
-    bool isStartingPointHit = false;
+    int isStartingPointHit = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,8 @@ public class ElbowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isStartingPointHit){
+        isStartingPointHit = PlayerPrefs.GetInt("isStartingPointHit");        
+        if(isStartingPointHit == 1){
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
