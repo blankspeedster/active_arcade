@@ -19,9 +19,9 @@ public class HandTracking : MonoBehaviour
 
         data = data.Remove(0, 1);
         data = data.Remove(data.Length-1, 1);
-        print(data);
+        // print(data);
         string[] points = data.Split(',');
-        print(points[0]);
+        // print(points[0]);
 
         //0        1*3      2*3
         //x1,y1,z1,x2,y2,z2,x3,y3,z3

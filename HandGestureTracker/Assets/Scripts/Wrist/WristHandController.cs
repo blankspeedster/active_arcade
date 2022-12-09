@@ -34,12 +34,12 @@ public class WristHandController : MonoBehaviour
 
     public async void CheckHandStatus()
     {
-        Debug.Log("Sample");
         string baseURL = PlayerPrefs.GetString("url");
 
         string message = null;
 
-        string url = "http://localhost:8888/active_arcade/home/status.php";
+        string url = PlayerPrefs.GetString("baseURL");
+;
 
         var client = new HttpClient();
         var request = new HttpRequestMessage

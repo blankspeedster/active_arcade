@@ -15,9 +15,9 @@ public class HandTrackingCenter : MonoBehaviour
 
         data = data.Remove(0, 1);
         data = data.Remove(data.Length-1, 1);
-        print(data);
+        // print(data);
         string[] points = data.Split(',');
-        print(points[0]);
+        // print(points[0]);
 
         for ( int i = 0; i<21; i++)
         {

@@ -8,7 +8,7 @@ public class WristScript : MonoBehaviour
 {
 
     public TMP_Text userName, timer, scoreText;
-    public float timeRemaining = 10;
+    float timeRemaining;
     public GameObject timeUpPanel;
 
     // Start is called before the first frame update
@@ -18,6 +18,9 @@ public class WristScript : MonoBehaviour
         string username = PlayerPrefs.GetString("username");
         userName.text = username;
         PlayerPrefs.SetInt("wristScore", 0);
+
+        int _ItimeRemaining = PlayerPrefs.GetInt("globalTimer");
+        timeRemaining = (float)_ItimeRemaining;
     }
 
     // Update is called once per frame

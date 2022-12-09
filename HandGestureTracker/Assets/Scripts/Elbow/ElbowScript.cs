@@ -8,7 +8,7 @@ public class ElbowScript : MonoBehaviour
 {
 
     public TMP_Text userName, timer, scoreText;
-    public float timeRemaining = 10;
+    private float timeRemaining;
     public GameObject timeUpPanel;
 
     // Start is called before the first frame update
@@ -19,6 +19,9 @@ public class ElbowScript : MonoBehaviour
         userName.text = username;
 
         PlayerPrefs.SetInt("elbowScore", 0);
+
+        int _ItimeRemaining = PlayerPrefs.GetInt("globalTimer");
+        timeRemaining = (float)_ItimeRemaining;
     }
 
     // Update is called once per frame
