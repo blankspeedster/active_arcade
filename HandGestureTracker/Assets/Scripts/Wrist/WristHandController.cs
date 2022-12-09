@@ -39,7 +39,6 @@ public class WristHandController : MonoBehaviour
         string message = null;
 
         string url = PlayerPrefs.GetString("baseURL");
-;
 
         var client = new HttpClient();
         var request = new HttpRequestMessage
