@@ -1,6 +1,8 @@
 <?php
     include("dbh.php");
 
+
+
     if(isset($_POST['save'])){
         $patient_id = $_POST['patient_id'];
         $therapist = $_POST['therapist'];
@@ -66,12 +68,14 @@
 
     //Update vitals of the patient record
     if (isset($_GET['updateVital'])) {
+        $date = date_default_timezone_set('Asia/Manila');
+        $date = date('Y-m-d H:i:s');
         $user_id = $_GET["updateVital"];
         $heart_rate = $_GET["heart_rate"];
         $blood_pressure = $_GET["blood_pressure"];
         $respiration = $_GET["respiration"];
 
-        $mysqli->query("INSERT INTO vitals (patient_id, heart_rate, blood_pressure, respiration) VALUES ('$user_id', '$heart_rate', '$blood_pressure', '$respiration')") or die ($mysqli->error);
+        $mysqli->query("INSERT INTO vitals (patient_id, heart_rate, blood_pressure, respiration, date_time) VALUES ('$user_id', '$heart_rate', '$blood_pressure', '$respiration', '$date')") or die ($mysqli->error);
     }
 
 ?>
