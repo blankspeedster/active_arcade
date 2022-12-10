@@ -13,7 +13,7 @@ public class ElbowStartingPoint : MonoBehaviour
     void Start()
     {
         layerOfObjects.SetActive(false);
-        instruction.text = "Please hit the star as the starting point to start the session.";
+        instruction.text = "Place your arm under the star and follow the arrow for the movement.";
     }
 
     // Update is called once per frame
