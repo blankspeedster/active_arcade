@@ -6,7 +6,7 @@ using TMPro;
 public class ElbowStartingPoint : MonoBehaviour
 {
     public TMP_Text instruction;
-    public GameObject thisStartingPoint, layerOfObjects;
+    public GameObject thisStartingPoint, layerOfObjects, arm;
     public Vector3 _rotation;
     public float _speed;
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class ElbowStartingPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        instruction.text = "Place your arm under the star and follow the arrow for the movement.";
         PlayerPrefs.SetInt("isStartingPointHit", 0);
         transform.Rotate(_rotation * _speed * Time.deltaTime);
     }
@@ -27,6 +28,7 @@ public class ElbowStartingPoint : MonoBehaviour
     {
         PlayerPrefs.SetInt("isStartingPointHit", 1);
         layerOfObjects.SetActive(true);
+        arm.SetActive(false);
         thisStartingPoint.SetActive(false);
     }
 }
