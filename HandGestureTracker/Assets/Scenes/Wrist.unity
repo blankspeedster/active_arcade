@@ -604,9 +604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da66edab67a6430b8c15ed9e884e50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checker: {fileID: 925106788}
-  checker2: {fileID: 730422423}
-  checker3: {fileID: 738030839}
+  checkerTopRight: {fileID: 730422423}
+  checkerTopLeft: {fileID: 1757847087}
+  checkerLeft: {fileID: 738030839}
+  checkerRight: {fileID: 925106788}
 --- !u!1 &176049101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,9 +1013,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da66edab67a6430b8c15ed9e884e50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checker: {fileID: 925106788}
-  checker2: {fileID: 730422423}
-  checker3: {fileID: 738030839}
+  checkerTopRight: {fileID: 730422423}
+  checkerTopLeft: {fileID: 1757847087}
+  checkerLeft: {fileID: 738030839}
+  checkerRight: {fileID: 925106788}
 --- !u!1 &490832638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,9 +2304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da66edab67a6430b8c15ed9e884e50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checker: {fileID: 925106788}
-  checker2: {fileID: 730422423}
-  checker3: {fileID: 738030839}
+  checkerTopRight: {fileID: 730422423}
+  checkerTopLeft: {fileID: 1757847087}
+  checkerLeft: {fileID: 738030839}
+  checkerRight: {fileID: 925106788}
 --- !u!1 &730422423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,7 +2322,7 @@ GameObject:
   - component: {fileID: 730422427}
   - component: {fileID: 730422426}
   m_Layer: 0
-  m_Name: colliderCheckerTop
+  m_Name: colliderCheckerTopA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3538,9 +3541,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da66edab67a6430b8c15ed9e884e50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checker: {fileID: 925106788}
-  checker2: {fileID: 730422423}
-  checker3: {fileID: 738030839}
+  checkerTopRight: {fileID: 730422423}
+  checkerTopLeft: {fileID: 1757847087}
+  checkerLeft: {fileID: 738030839}
+  checkerRight: {fileID: 925106788}
 --- !u!1 &925106788
 GameObject:
   m_ObjectHideFlags: 0
@@ -6758,7 +6762,7 @@ GameObject:
   - component: {fileID: 1757847090}
   - component: {fileID: 1757847089}
   m_Layer: 0
-  m_Name: colliderCheckerTop
+  m_Name: colliderCheckerTopB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
