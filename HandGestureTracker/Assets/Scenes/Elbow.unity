@@ -9756,7 +9756,7 @@ MonoBehaviour:
   instruction: {fileID: 83194686}
   thisStartingPoint: {fileID: 7634824489531798702}
   layerOfObjects: {fileID: 994511912}
-  arm: {fileID: 0}
+  arm: {fileID: 5171265}
   _rotation: {x: 0, y: 0, z: 5}
   _speed: 10
 --- !u!65 &7927979140892110407

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColissionWristA : MonoBehaviour
 {   
-    public GameObject checker, checker2, checker3;
+    public GameObject checkerTopRight, checkerTopLeft, checkerLeft, checkerRight; 
     // Start is called before the first frame update
     void Start()
     {
@@ -19,47 +19,47 @@ public class ColissionWristA : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.name == "colliderChecker")
+        //If right hand, right collider is hit
+        if(collision.collider.name == "colliderCheckerRight")
         {
             int score = PlayerPrefs.GetInt("wristScore");
             score = score + 1;
             PlayerPrefs.SetInt("wristScore", score);
-            checker.SetActive(false);
-            Invoke("ShowChecker", 2.0f);
+            checkerRight.SetActive(false);
+            checkerTopRight.SetActive(true);
         }
 
-        if(collision.collider.name == "colliderChecker2")
+        //If right hand, right collider is hit
+        if(collision.collider.name == "colliderCheckerTopA")
         {
             int score = PlayerPrefs.GetInt("wristScore");
             score = score + 1;
             PlayerPrefs.SetInt("wristScore", score);
-            checker2.SetActive(false);
-            Invoke("ShowChecker2", 2.0f);            
+            checkerTopRight.SetActive(false);
+            checkerRight.SetActive(true);          
         }
 
-        if(collision.collider.name == "colliderChecker3")
+        //If left hand, left collider is hit
+        if(collision.collider.name == "colliderCheckerLeft")
         {
             int score = PlayerPrefs.GetInt("wristScore");
             score = score + 1;
             PlayerPrefs.SetInt("wristScore", score);
-            checker3.SetActive(false);
-            Invoke("ShowChecker3", 2.0f);            
+            checkerLeft.SetActive(false);
+            checkerTopLeft.SetActive(true);
         }
-    }
+        //If left hand, right collider is hit
+        if(collision.collider.name == "colliderCheckerTopB")
+        {
+            int score = PlayerPrefs.GetInt("wristScore");
+            score = score + 1;
+            PlayerPrefs.SetInt("wristScore", score);
+            checkerTopLeft.SetActive(false);
+            checkerLeft.SetActive(true);          
+        }
 
-    void ShowChecker()
-    {
-        checker.SetActive(true);
-    }
 
-    void ShowChecker2()
-    {
-        checker2.SetActive(true);
-    }
 
-    void ShowChecker3()
-    {
-        checker3.SetActive(true);
     }
 
 }
